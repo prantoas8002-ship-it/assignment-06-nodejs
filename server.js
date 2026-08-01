@@ -17,6 +17,18 @@ const server = http.createServer((req, res) => {
             }
         })
     }
+    else if (url === '/about') {
+        fs.readFile("about.html", (err, data) => {
+            if (err) {
+                res.writeHead(404, { "Content-type": "text/html" });
+                res.end("<h1>An error occured</h1>")
+            }
+            else {
+                res.writeHead(200, { "Content-type": "text/html" });
+                res.end(data);
+            }
+        })
+    }
     // res.writeHead(200, { "Content-type": "text/plain" });
     // res.end("server created at 5000 successfully");
 
